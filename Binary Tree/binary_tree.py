@@ -10,7 +10,7 @@ class Node(object):
 
 class Tree(object):
 
-	def __init__(self, data):
+	def __init__(self, root):
 
 		self.root = root
 
@@ -26,8 +26,8 @@ class Tree(object):
 			return 0
 
 		else:
-			lh = height(root.left)
-			rh = height(root.right)
+			lh = self.height(root.left)
+			rh = self.height(root.right)
 
 			if lh < rh:
 				return rh + 1
@@ -35,7 +35,7 @@ class Tree(object):
 				return lh + 1
 
 
-if __name__=="__main__":
+def construct_binary_tree():
 
 	# initialize root node of a tree
 	root = Node(1)
@@ -48,4 +48,4 @@ if __name__=="__main__":
 	root.left.left = Node(4)
 	root.left.right = Node(5)
 
-	tree.inorder(root)
+	return tree
