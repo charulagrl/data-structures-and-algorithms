@@ -1,3 +1,5 @@
+# -*- coding: UTF-8 -*-
+
 # Program to check if the binary tree is a binary search tree(BST) or not
 
 import binary_tree
@@ -26,7 +28,7 @@ import binary_tree
 
 def check_if_bst(node):
 	
-	return check_if_bst_util(node, 100000, -100000)
+	return check_if_bst_util(node, -100000, 100000)
 
 def check_if_bst_util(node, min_val, max_val):
 
@@ -37,7 +39,10 @@ def check_if_bst_util(node, min_val, max_val):
 	if node.data < min_val or node.data > max_val:
 		return False
 
-	return check_if_bst_util(node.left) and check_if_bst_util(node.right)
+	if check_if_bst_util(node.left, min_val, node.data) and check_if_bst_util(node.right, node.data, max_val):
+		return True
+	else:
+		return False
 
 
 if __name__=="__main__":
