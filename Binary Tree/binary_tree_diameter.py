@@ -1,3 +1,5 @@
+# -*- coding: UTF-8 -*-
+
 # Program to find the diameter of a binary tree
 # i.e. number of nodes in the longest path between two leaves in the tree
 

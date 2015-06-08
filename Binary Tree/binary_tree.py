@@ -1,3 +1,5 @@
+# -*- coding: UTF-8 -*-
+
 # Program to construct Binary Tree
 
 class Node(object):

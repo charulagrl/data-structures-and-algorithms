@@ -1,3 +1,5 @@
+# -*- coding: UTF-8 -*-
+
 # Program to print left view of a tree
 
 import binary_tree
