@@ -8,13 +8,13 @@ def longest_palindrome(s):
 	start = 0
 
 	# consider one by one every point as its center point of even and odd substring
-	for k in range(len(s)):
+	for k in range(1, len(s)):
 
 		# considering all even length substrings with center as k and k-1
 		low = k-1
 		high = k
 
-		while low > 0 and high < len(s)-1 and s[low] == s[high]:
+		while low >= 0 and high < len(s) and s[low] == s[high]:
 			if high-low+1 > maxLength:
 				maxLength = high-low+1
 				start = low
@@ -26,7 +26,7 @@ def longest_palindrome(s):
 		low = k-1
 		high = k+1
 
-		while low > 0 and high < len(s)-1 and s[low] == s[high]:
+		while low >= 0 and high < len(s) and s[low] == s[high]:
 			if high-low+1 > maxLength:
 				maxLength = high-low+1
 				start = low
@@ -39,6 +39,6 @@ def longest_palindrome(s):
 
 	print "longest palindromic substring", longest_substring
 
-s = list("forgeeksskeegfor")
+s = list("forgeeksskeegrof")
 
 longest_palindrome(s)
