@@ -3,17 +3,24 @@
 # Program to find level of a node in a binary tree
 
 import binary_tree
+import copy
 
 def level_of_node(root, node, level):
 	if root is None:
-		return
+		return 0
 
 	if root.data == node:
-		print level
+		return level
 
-	level_of_node(root.left, node, level+1)
-	level_of_node(root.right, node, level+1)
+	else:
+		return max(level_of_node(root.left, node, level+1), level_of_node(root.right, node, level+1))
 
-tree = binary_tree.construct_binary_tree()
 
-level_of_node(tree.root, 5, 0)
+def find_level():
+	tree = binary_tree.construct_binary_tree()
+	level = 0
+	print level_of_node(tree.root, 8, level+1)
+
+
+if __name__=="__main__":
+	find_level()
