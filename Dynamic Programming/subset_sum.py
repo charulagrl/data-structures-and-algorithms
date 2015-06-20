@@ -35,18 +35,18 @@ def subset_sum_dynamic(arr, sum_value):
 	for j in range(sum_value+1):
 		soln[0][j] = False
 
-	for i in range(0, n+1):
-		for j in range(0, sum_value+1):
+	for i in range(1, n+1):
+		for j in range(1, sum_value+1):
 			if arr[i-1] > j:
 				soln[i][j] = soln[i-1][j]
 
 			else:
 				soln[i][j] = soln[i-1][j] or soln[i-1][j-arr[i-1]]
 
-	return soln[n-1][sum_value]
+	return soln[n][sum_value]
 
 
-arr = [3, 34, 4, 12, 5, 2]
-sum_value = 9
+arr = [1, 5, 10]
+sum_value = 8
 print subset_sum(arr, sum_value)
 print subset_sum_dynamic(arr, sum_value)
