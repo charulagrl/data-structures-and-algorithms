@@ -1,3 +1,5 @@
+# -*- coding: UTF-8 -*-
+
 '''
 
 	Problem: Given a string, check if it a permutation of palindromic String. The palindrome does not 

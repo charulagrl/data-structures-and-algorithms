@@ -1,3 +1,5 @@
+# -*- coding: UTF-8 -*-
+
 '''
 
 	Problem: Given two strings, check if one string is a permutation of another. 
