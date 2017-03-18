@@ -1,6 +1,10 @@
+# -*- coding: UTF-8 -*-
+
+# Program to initialize linked list
 import linked_list as ll
 
-
+# Initialize the following linked list
+# 4 -> 5 -> 13 -> 6 -> 9 -> 41 -> 8 -> 27 -> 33
 def initialize_linked_list():
 	lList = ll.LinkedList()
 	lList.insert(4)
@@ -14,9 +18,9 @@ def initialize_linked_list():
 	lList.insert(33)
 
 	lList.print_list()
-	print lList.search(lList.head, 5, 1)
-	return lList.head
+	return lList
 
+# Initialize a linked list by taking elements from an array
 def initialize_linked_list_by_array(elements):
 
 	lList = ll.LinkedList()
