@@ -88,7 +88,8 @@ def do_string_compression(s):
 
 	return ''.join(new_string)
 
-# Writing unit-test for this function
+
+# Writing unit-test for the above function
 import unittest
 
 class MyTest(unittest.TestCase):

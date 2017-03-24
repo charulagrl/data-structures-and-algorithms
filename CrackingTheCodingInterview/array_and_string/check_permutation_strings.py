@@ -53,7 +53,7 @@ def check_permutation(s1, s2):
 	else:
 		return False
 
-# Writing unit-test for this function
+# Writing unit-test for the above function
 import unittest
 
 class MyTest(unittest.TestCase):

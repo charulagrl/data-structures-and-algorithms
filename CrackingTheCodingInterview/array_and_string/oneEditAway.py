@@ -77,3 +77,16 @@ def check_for_one_extra_letter(s1, s2, length):
 			count2 += 1
 
 	return True
+
+# Writing unit-test for this function
+import unittest
+
+class MyTest(unittest.TestCase):
+
+	def test(self):
+		self.assertEqual(check_one_away("pale", "ple"), True)
+		self.assertEqual(check_one_away("pales", "pale"), True)
+		self.assertEqual(check_one_away("pale", "bale"), True)
+		self.assertEqual(check_one_away("pale", "bake"), False)
+
+unittest.main()

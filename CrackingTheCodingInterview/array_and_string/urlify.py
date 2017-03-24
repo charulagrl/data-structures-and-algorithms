@@ -80,3 +80,14 @@ def urlify_2(s, length):
 		index -= 1
 
 	return ''.join(new_string)
+
+# Writing unit-test for the above function
+import unittest
+
+class MyTest(unittest.TestCase):
+
+	def test(self):
+		self.assertEqual(urlify("Mr John Smith    ", 13), "Mr%20John%20Smith")
+		self.assertEqual(urlify_2("Mr John Smith    ", 13), "Mr%20John%20Smith")
+
+unittest.main()

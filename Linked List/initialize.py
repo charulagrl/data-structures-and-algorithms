@@ -3,7 +3,7 @@
 # Program to initialize linked list
 import linked_list as ll
 
-# Initialize the following linked list
+# Initialize the following linked listaz
 # 4 -> 5 -> 13 -> 6 -> 9 -> 41 -> 8 -> 27 -> 33
 def initialize_linked_list():
 	lList = ll.LinkedList()
