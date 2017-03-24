@@ -69,3 +69,21 @@ def unique_character_string(s):
 			hash_map[i] = True
 
 	return True
+
+# Writing unit-test for this function
+import unittest
+
+class MyTest(unittest.TestCase):
+
+   def test(self):
+      # Unit test for Approach 1
+      self.assertEqual(is_unique("paledre"), True)
+      self.assertEqual(is_unique("abcdfrea"), False)
+      # Unit test for approach 2
+      self.assertEqual(check_is_unique("paledns"), False)
+      self.assertEqual(check_is_unique("paleldnas"), False)
+      # Unit test for approach 3
+      self.assertEqual(unique_character_string("palesarthd"), False)
+      self.assertEqual(unique_character_string("palesarthds"), False)
+
+unittest.main()

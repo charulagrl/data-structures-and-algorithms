@@ -45,3 +45,13 @@ def zeroMatrix(matrix):
 
 
 	return matrix
+
+# Writing unit-test for the above function
+import unittest
+
+class MyTest(unittest.TestCase):
+
+	def test(self):
+		self.assertEqual(zeroMatrix([[1, 2, 3], [4, 5, 6], [7, 8, 0]]), [[1, 2, 0], [4, 5, 0], [0, 0, 0]])
+
+unittest.main()

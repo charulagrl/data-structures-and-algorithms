@@ -52,3 +52,14 @@ def check_permutation(s1, s2):
 		return True
 	else:
 		return False
+
+# Writing unit-test for the above function
+import unittest
+
+class MyTest(unittest.TestCase):
+
+	def test(self):
+		self.assertEqual(check_permutation("aabcbaah"), "aabcbaah")
+		self.assertEqual(check_permutation("aabcccccaaa"), "a2b1c5a3")
+
+unittest.main()

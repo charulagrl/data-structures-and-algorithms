@@ -43,7 +43,7 @@ def permuation_palindrome_string(s):
 
 	flag = False
 	for key, value in hash_map.iteritems():
-		if flag == True and value % 2 != 0:
+		if flag and value % 2 != 0:
 			return False
 
 		if value % 2 != 0:
@@ -89,3 +89,14 @@ def permutation_palindrome_string_2(s):
 		return True
 
 	return False
+
+# Writing unit-test for the above function
+import unittest
+
+class MyTest(unittest.TestCase):
+
+	def test(self):
+		self.assertEqual(permuation_palindrome_string("Tact Coa"), True)
+		self.assertEqual(permutation_palindrome_string_2("Tact Coa"), True)
+
+unittest.main()
