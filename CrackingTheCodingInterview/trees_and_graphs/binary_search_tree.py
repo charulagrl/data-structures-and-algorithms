@@ -60,3 +60,5 @@ def initialize():
 	bst.insert(9, bst.root)
 	bst.insert(3, bst.root)
 	bst.inorder(bst.root)
+
+	return bst

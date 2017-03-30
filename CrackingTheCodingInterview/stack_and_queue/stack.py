@@ -50,6 +50,7 @@ class Stack(object):
 			raise ValueError("Stack is empty")
 
 		else:
+			print self.top.data, "is deleted"
 			self.top = self.top.nextnode
 
 
@@ -61,4 +62,4 @@ class Stack(object):
 			raise ValueError("Stack is empty")
 
 		else:
-			print (self.top.data)
+			return (self.top.data)

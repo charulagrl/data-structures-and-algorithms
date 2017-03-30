@@ -64,4 +64,4 @@ class Queue(object):
 		if self.last is None:
 			raise ValueError("No element is there in queue")
 
-		print self.last.data
+		return self.last.data

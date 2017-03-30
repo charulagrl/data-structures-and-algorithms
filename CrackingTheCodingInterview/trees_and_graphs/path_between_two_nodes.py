@@ -1,4 +1,9 @@
 # -*- coding: UTF-8 -*-
+'''
+	Problem: Given a graph, find the path between two nodes
+
+	Solution: We will tarverse the path using depth first search and append the nodes visited in the path.
+'''
 
 import graph
 
