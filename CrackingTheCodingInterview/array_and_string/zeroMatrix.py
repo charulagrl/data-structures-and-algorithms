@@ -46,12 +46,73 @@ def zeroMatrix(matrix):
 
 	return matrix
 
-# Writing unit-test for the above function
+'''
+	Second approach: We can reduce the space complexity to O(1) by using the first row as a replacement for the row array
+	and first column as the replacement for the column array.
+'''
+
+def setZeroes(matrix):
+	rowHasZero = False
+	columnHasZero = False
+
+	# Checking for the elements in the first column, i.e. checking for matrix[i][0]
+	for row in matrix:
+		if row[0] == 0:
+			rowHasZero = True
+
+	# Checking for the elements in the first row ie. matrix[0][j]
+	for j in matrix[0]:
+		if j == 0:
+			columnHasZero = True
+
+	# Check for each element in the rest of matrix 
+	for i in range(1, len(matrix)):
+		for j in range(1, len(matrix[0])):
+			if matrix[i][j] == 0:
+				matrix[i][0] = 0
+				matrix[0][j] = 0
+
+	# For all the zero elements in the first column, nullify row whose first element is zero
+	for i in range(1, len(matrix)):
+		if matrix[i][0] == 0:
+			nullifyRow(matrix, i)
+
+	# For all the zero elements in first row, nullify all columns whose first element is zero
+	for j in range(1, len(matrix[0])):
+		if matrix[0][j] == 0:
+			nullifyCol(matrix, j)
+
+
+	if rowHasZero:
+		nullifyRow(matrix, 0)
+
+	if columnHasZero:
+		nullifyCol(matrix, 0)
+
+	return matrix
+
+def nullifyRow(matrix, i):
+	if i >= len(matrix):
+		return
+	
+	for j in range(len(matrix[i])):
+		matrix[i][j] = 0
+
+def nullifyCol(matrix, j):
+	if j > len(matrix[0]):
+		return
+
+	for i in range(len(matrix)):
+		matrix[i][j] = 0
+
+
+# Writing unit-test for the above functions
 import unittest
 
 class MyTest(unittest.TestCase):
 
 	def test(self):
 		self.assertEqual(zeroMatrix([[1, 2, 3], [4, 5, 6], [7, 8, 0]]), [[1, 2, 0], [4, 5, 0], [0, 0, 0]])
+		self.assertEqual(setZeroes([[1, 2, 3], [4, 5, 6], [7, 8, 0]]), [[1, 2, 0], [4, 5, 0], [0, 0, 0]])
 
 unittest.main()
