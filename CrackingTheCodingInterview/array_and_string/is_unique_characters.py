@@ -70,6 +70,16 @@ def unique_character_string(s):
 
 	return True
 
+''' 
+   Approach 4: Using sets and checking is the len of the set is equal to the original length. If they are equal, then
+   the string contains unique characters.
+'''
+
+def is_unique_string(s):
+
+   return len(set(s)) == len(s)
+
+
 # Writing unit-test for this function
 import unittest
 
@@ -77,13 +87,16 @@ class MyTest(unittest.TestCase):
 
    def test(self):
       # Unit test for Approach 1
-      self.assertEqual(is_unique("paledre"), True)
+      self.assertEqual(is_unique("paledr"), True)
       self.assertEqual(is_unique("abcdfrea"), False)
       # Unit test for approach 2
-      self.assertEqual(check_is_unique("paledns"), False)
+      self.assertEqual(check_is_unique("palednsp"), False)
       self.assertEqual(check_is_unique("paleldnas"), False)
       # Unit test for approach 3
       self.assertEqual(unique_character_string("palesarthd"), False)
       self.assertEqual(unique_character_string("palesarthds"), False)
+
+      self.assertEqual(is_unique_string("palesarthd"), False)
+      self.assertEqual(is_unique_string("palesrthd"), True)
 
 unittest.main()
