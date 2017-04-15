@@ -38,19 +38,26 @@ class BinaryTreeNode(object):
 		return text
 
 def initialize():
-	tree = BinaryTreeNode(5)
+	root = BinaryTreeNode(5)
 
 	# Initialize the child nodes
 	child_1 = BinaryTreeNode(4)
 	child_2 = BinaryTreeNode(6)
 	child_child_1 = BinaryTreeNode(3)
 	child_child_2 = BinaryTreeNode(1) 
+	child_child_3 = BinaryTreeNode(13) 
+	child_child_4 = BinaryTreeNode(12) 
 
 	# Connect the child nodes to the parent node
 	child_1.add_left(child_child_1)
-	child_2.add_right(child_child_2)
-	tree.add_left(child_1)
-	tree.add_right(child_2)
+	child_1.add_right(child_child_2)
+	child_2.add_left(child_child_3)
+	child_2.add_right(child_child_4)
+	root.add_left(child_1)
+	root.add_right(child_2)
 
-	print tree
-	return tree
+	print root
+	return root
+
+if __name__ == "__main__":
+	initialize()

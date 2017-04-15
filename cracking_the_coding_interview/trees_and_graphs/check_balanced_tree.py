@@ -33,10 +33,11 @@ def bruteforce_check_balanced(root):
 
 	return bruteforce_check_balanced(root.left) and bruteforce_check_balanced(root.right)
 
-def initialize():
+def main_function():
 	root = binary_tree.initialize()
 	print calculate_height(root)
 
 	print bruteforce_check_balanced(root)
 
-initialize()
+if __name__ == "__main__":
+	main_function()

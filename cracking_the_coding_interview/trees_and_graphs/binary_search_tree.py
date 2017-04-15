@@ -62,3 +62,6 @@ def initialize():
 	bst.inorder(bst.root)
 
 	return bst
+
+if __name__ == "__main__":
+	initialize()

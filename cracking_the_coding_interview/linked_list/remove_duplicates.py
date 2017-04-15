@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 
 '''
-	Problem: Implement a program to remove duplicates elements from a linked list
+	Problem: Implement a program to remove duplicates elements from an unsorted linked list
 	
 	Example: 2 -> 1 -> 7 -> 2 -> 9 -> 1 -> 8 
 	Result: 2 -> 1 -> 7 -> 9 -> 8
@@ -15,7 +15,11 @@
 
 	Time Complexity: O(n) Space Complexity: O(n)
 '''
+
+import linked_list
+
 def remove_duplicates(head):
+	''' Remove duplicates using hash map '''
 	hash_map = {}
 	current = head
 	prev = None
@@ -29,3 +33,20 @@ def remove_duplicates(head):
 
 		prev = current
 		current = current.nextnode
+
+
+# Writing unit-test for the above function
+# import unittest
+
+# class MyTest(unittest.TestCase):
+
+# 	def test(self):
+# 		lList = linked_list.initialize_linked_list()
+# 		lList.print_list()
+# 		# self.assertEqual(string_rotation("hoolahoop", "lahoophoo"), True)
+# 		# self.assertEqual(string_rotation("waterbottle", "erbottlewat"), True)
+
+# unittest.main()
+
+lList = linked_list.initialize_linked_list()
+lList.print_list()

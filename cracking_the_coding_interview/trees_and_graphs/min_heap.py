@@ -1,9 +1,13 @@
 # -*- coding: UTF-8 -*-
 
 ''' 
-	A heap is a tree based data structure where nodes are arranged in a specific order such that root node is given the most
+	A binary heap is a tree based data structure where nodes are arranged in a specific order such that root node is given the most
 	priority. 
 
+	Complexity: 
+	Insertion: O(log n)
+	ExtractMin: 
+	
 '''
 
 class MinHeap(object):
@@ -29,7 +33,7 @@ class MinHeap(object):
 			child_index = parent_index
 			parent_index = self.parent(child_index)
 
-		print self.arr
+		# print self.arr
 
 
 	def heapify(self, i):
@@ -49,6 +53,8 @@ class MinHeap(object):
 			self.heapify(minimum)
 
 	def extract_min(self):
+		if len(self.arr) == 0:
+			return
 		deleted_node = self.arr.pop(0)
 		self.heapify(0)
 
@@ -81,3 +87,4 @@ if __name__ == "__main__":
 	print min_heap.extract_min()
 	print min_heap.extract_min()
 	min_heap.delete_key(3)
+	

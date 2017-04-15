@@ -93,7 +93,7 @@ def leftmost_node(node):
 
 
 
-def initialize():
+def main_function():
 	root = BinaryTreeNode(5)
 
 	# Initialize the child nodes
@@ -117,4 +117,5 @@ def initialize():
 	successor = get_inorder_successor(temp)
 	print successor.data
 
-initialize()
+if __name__ == "__main__":
+	main_function()

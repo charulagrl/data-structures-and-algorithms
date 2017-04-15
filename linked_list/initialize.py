@@ -14,7 +14,7 @@ def initialize_linked_list():
 	lList.insert(9)
 	lList.insert(41)
 	lList.insert(8)
-	lList.insert(27)
+	lList.insert(4)
 	lList.insert(33)
 
 	lList.print_list()

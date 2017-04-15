@@ -24,7 +24,6 @@ def check_permutation(s1, s2):
 	hash_map = {}
 
 	for i in s1:
-
 		if i not in hash_map:
 			hash_map[i] = 1
 

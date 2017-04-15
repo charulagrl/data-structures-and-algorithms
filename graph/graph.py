@@ -3,11 +3,13 @@
 # Program to initialize a graph and edge
 
 class Edge(object):
+	''' Defines an edge in a graph '''
 	def __init__(self, src=None, dest=None):
 		self.src=src
 		self.dest=dest
 
 class Graph(object):
+	''' Defines the graph using vertices and edges '''
 	def __init__(self, V=None, edges=[]):
 		self.V = V
 		self.edges = edges

@@ -33,11 +33,12 @@ def common_ancestor(root, p, q):
 	if left is None:
 		return right
 
-def initialize():
+def main_function():
 	''' Function to initialize the binary tree'''
 	import binary_tree
 	root = binary_tree.initialize()
 	node = common_ancestor(root, root.left, root.right.right)
 	print node.data
 
-initialize()
+if __name__ == "__main__":
+	main_function()

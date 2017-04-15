@@ -1,51 +1,6 @@
 # -*- coding: UTF-8 -*-
 
-class Edge:
-	'''
-		Class to represent an edge in a graph
-	'''
-	def __init__(self, src, dest, weight=None):
-		self.src = src
-		self.dest = dest
-		self.weight = weight
-
-	def __hash__(self):
-		return hash((self.src, self.dest))
-
-	def __eq__(self, other):
-		return (self.src, self.dest) == (other.src, other.dest)
-
-
-class Vertex:
-	'''
-		Class to represent a vertex in a graph
-	'''
-	def __init__(self, name):
-		self.name = name
-
-	def __hash__(self):
-		return hash(self.name)
-
-	def __eq__(self, other):
-		return self.name == other.name
-
-
-class AbstractGraph:
-	'''
-		Abstract class for a graph
-	'''
-	def add_edge(self, src, dest, weight=None, directed=True):
-		raise NotImplementedError
-	
-	def create_vertex(self, name):
-		raise NotImplementedError
-
-	def get_weight(self, src, dest):
-		raise NotImplementedError
-
-	def get_edges(self, src):
-		raise NotImplementedError
-
+from graph import AbstractGraph, Vertex, Edge
 
 class AdjacencyListGraph(AbstractGraph):
 	'''
@@ -58,7 +13,7 @@ class AdjacencyListGraph(AbstractGraph):
 		vertex = Vertex(name=name)
 
 		if vertex not in self.adjacency_dict:
-			self.adjacency_dict[vertex] = list()
+			self.adjacency_dict[vertex] = []
 
 		return vertex
 
@@ -98,8 +53,7 @@ class AdjacencyListGraph(AbstractGraph):
 
 		return text
 
-
-def initialize():
+def create_graph():
 	'''
 		Function to initialize a graph 
 	'''
@@ -116,9 +70,10 @@ def initialize():
 	graph.add_edge(b, c, directed=False)
 	graph.add_edge(c, d, directed=False)
 	graph.add_edge(d, b, directed=False)
-	
-	print (graph)
 
+	return graph
 
+if __name__ == "__main__":
+	g = create_graph()
 
-
+	print g

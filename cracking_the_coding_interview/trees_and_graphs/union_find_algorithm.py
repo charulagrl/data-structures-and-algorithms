@@ -28,6 +28,8 @@ def detect_cycle(edges, parent):
 	return False
 
 def initialize_parent(g):
+	''' Initialize a parent dict where each node stores its parent node.
+		Initially each node is a different subsets with no parent node, hence initialized with -1 '''
 	parent = {}
 	for vertex in g.vertices:
 		parent[vertex.name] = -1

@@ -26,5 +26,9 @@ def minimal_tree(sorted_array, start, end):
 
 def minimal_tree_helper():
 	sorted_array = [3, 5, 7, 8, 10, 13, 15]
+
 	root = minimal_tree(sorted_array, 0, len(sorted_array)-1)
 	print (root)
+
+if __name__ == "__main__":
+	minimal_tree_helper()

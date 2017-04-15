@@ -51,12 +51,23 @@ def level_tree():
 		Function to intialize a tree and call level wise traversal
 	'''
 	root = binary_tree.initialize()
-	height = calculate_height(root)
+	# height = calculate_height(root)
 
-	for level in range(1, height+1):
-		ll = linked_list.LinkedList()
-		convert_to_linked_list(root, level, ll)
-		ll.print_list()
+	# for level in range(1, height+1):
+	# 	ll = linked_list.LinkedList()
+	# 	convert_to_linked_list(root, level, ll)
+	# 	ll.print_list()
+	print level_of_node(root, 1, 0)
+
+
+def level_of_node(root, node, level):
+    if root is None:
+        return -1
+
+    if root.data == node:
+        return level
+
+    return max(level_of_node(root.left, node, level+1), level_of_node(root.right, node, level+1))
 
 # -------------------------------------------------------------------------------------------------------------
 

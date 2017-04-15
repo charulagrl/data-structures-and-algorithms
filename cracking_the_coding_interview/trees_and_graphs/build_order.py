@@ -47,7 +47,7 @@ def create_graph(projects, dependencies):
 
 	return graph
 
-def initialize():
+def main_function():
 	''' Function that initialize the values and call build_order function '''
 	projects = ("a", "b", "c", "d", "e", "f")
 	dependencies = (("a", "d"), ("f", "b"), ("b", "d"), ("f", "a"), ("d", "c"))
@@ -59,4 +59,5 @@ def initialize():
 	if build_order(graph, dependencies, build_order_list):
 		print build_order_list
 
-initialize()	
+if __name__ == "__main__":
+	main_function()
