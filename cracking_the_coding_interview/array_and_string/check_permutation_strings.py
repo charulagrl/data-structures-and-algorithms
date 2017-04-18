@@ -24,12 +24,8 @@ def check_permutation(s1, s2):
 	hash_map = {}
 
 	for i in s1:
-		if i not in hash_map:
-			hash_map[i] = 1
-
-		else:
-			hash_map[i] += 1
-
+		hash_map.setdefault(i, 0)
+		hash_map[i] += 1
 
 	# loop through the second string
 	for i in s2:
@@ -47,10 +43,10 @@ def check_permutation(s1, s2):
 
 
 	# check if the hash_map is empty
-	if len(hash_map) == 0:
-		return True
-	else:
+	if hash_map:
 		return False
+	else:
+		return True
 
 # Writing unit-test for the above function
 import unittest
@@ -58,7 +54,7 @@ import unittest
 class MyTest(unittest.TestCase):
 
 	def test(self):
-		self.assertEqual(check_permutation("aabcbaah"), "aabcbaah")
-		self.assertEqual(check_permutation("aabcccccaaa"), "a2b1c5a3")
+		self.assertEqual(check_permutation("aabcbaah", "haabcbaa"), True)
+		self.assertEqual(check_permutation("aabcccaaa", "abcacaac"), False)
 
 unittest.main()

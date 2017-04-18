@@ -35,18 +35,15 @@ def permuation_palindrome_string(s):
 	hash_map = {}
 
 	for c in s:
-		if c not in hash_map:
-			hash_map[c] = 1
-		else:
-			hash_map[c] += 1
-
+		hash_map.setdefault(c, 0)
+		hash_map[c] += 1
 
 	flag = False
 	for key, value in hash_map.iteritems():
-		if flag and value % 2 != 0:
+		if flag and value % 2:
 			return False
 
-		if value % 2 != 0:
+		if value % 2:
 			flag = True
 		
 
@@ -74,16 +71,14 @@ def permutation_palindrome_string_2(s):
 	for c in s:
 
 		# Check and store in hash_map
-		if c not in hash_map:
-			hash_map[c] = 1
-		else:
-			hash_map[c] += 1
+		hash_map.setdefault(c, 0)
+		hash_map[c] += 1
 
 		# check for the count each time
-		if hash_map[c] % 2 == 0:
-			count_odd -=1
+		if hash_map[c] % 2:
+			count_odd +=1
 		else:
-			count_odd += 1
+			count_odd -= 1
 
 	if count_odd <= 1:
 		return True
