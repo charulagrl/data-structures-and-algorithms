@@ -62,11 +62,11 @@ def unique_character_string(s):
 	# Declaring hash_map using python dictionaries
 	hash_map = {}
 
-	for i in s:
-		if i in hash_map:
+	for letter in s:
+		if letter in hash_map:
 			return False
 		else:
-			hash_map[i] = True
+			hash_map[letter] = True
 
 	return True
 
@@ -79,6 +79,25 @@ def is_unique_string(s):
 
    return len(set(s)) == len(s)
 
+'''
+   Approach 5: Considering the string characters belong to ascii letters, we will create a list which stores the ascii characters 
+   and a frequency list to store the frequency of each letter. 
+'''
+
+def is_unique_string_ascii(s):
+   '''Returns true if a string contains all unique characters and false if not'''
+   import string
+   characters = list(string.ascii_letters)
+   frequencies = [(c, 0) for c in characters]
+
+   for letter in s:
+      index = characters.index(letter)
+      if frequencies[index][1] == 1:
+         return False
+      else:
+         frequencies[index] = (letter, frequencies[index][1]+1)
+
+   return True
 
 # Writing unit-test for this function
 import unittest
@@ -98,5 +117,8 @@ class MyTest(unittest.TestCase):
 
       self.assertEqual(is_unique_string("palesarthd"), False)
       self.assertEqual(is_unique_string("palesrthd"), True)
+
+      self.assertEqual(is_unique_string_ascii("palesarthd"), False)
+      self.assertEqual(is_unique_string_ascii("palesrthd"), True)
 
 unittest.main()
