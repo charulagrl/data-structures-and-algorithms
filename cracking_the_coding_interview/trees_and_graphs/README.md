@@ -8,7 +8,7 @@
 * [Successor](https://github.com/charulagrl/Data-Structures-and-Algorithms/blob/master/CrackingTheCodingInterview/trees_and_graphs/inorder_successor.py)
 * [Build Order](https://github.com/charulagrl/Data-Structures-and-Algorithms/blob/master/CrackingTheCodingInterview/trees_and_graphs/build_order.py)
 * [First Common Ancestor](https://github.com/charulagrl/Data-Structures-and-Algorithms/blob/master/CrackingTheCodingInterview/trees_and_graphs/first_common_ancestor.py)
-* [BST Sequence]
+* [BST Sequence]()
 * [Check Subtree](https://github.com/charulagrl/Data-Structures-and-Algorithms/blob/master/CrackingTheCodingInterview/trees_and_graphs/check_subtree.py)
-* [Random Node]
-* [Paths with Sum]
+* [Random Node]()
+* [Paths with Sum]()

@@ -4,7 +4,7 @@ from __future__ import print_function
 
 
 class Node(object):
-	''' Represent a single node in a linked list'''
+	'''Represent a single node in a linked list'''
 
 	def __init__(self, data, nextnode=None):
 		self.data = data
@@ -12,7 +12,7 @@ class Node(object):
 
 
 class LinkedList(object):
-	''' Represent a linked list'''
+	'''Represent a linked list'''
 
 	def __init__(self, head=None):
 		self.head = head
@@ -50,7 +50,7 @@ class LinkedList(object):
 		current.nextnode = current.nextnode.nextnode
 
 	def get_size(self):
-		''' Get the size of the linked list'''
+		'''Get the size of the linked list'''
 		count = 0
 		current = self.head
 		while current:
@@ -68,7 +68,7 @@ class LinkedList(object):
 		return False
 
 	def print_list(self):
-		''' Print the elements in a linked list'''
+		'''Print the elements in a linked list'''
 
 		if not self.head:
 			raise ValueError("List is empty")
@@ -78,10 +78,12 @@ class LinkedList(object):
 			print(current.data, end=" ")
 			current = current.nextnode
 
+		print ("\n")
+
 
 def initialize_linked_list():
-	''' Initialize a linked list and insert the following elements in the linked list '''
-	''' 4, 5, 13, 6, 9, 41, 8, 4, 33 '''
+	'''Initialize a linked list and insert the following elements in the linked list'''
+	'''4, 5, 13, 6, 9, 41, 8, 4, 33'''
 	lList = LinkedList()
 	lList.insert(4)
 	lList.insert(5)
@@ -93,7 +95,6 @@ def initialize_linked_list():
 	lList.insert(4)
 	lList.insert(33)
 
-	# lList.print_list()
 	return lList
 
 if __name__ == "__main__":

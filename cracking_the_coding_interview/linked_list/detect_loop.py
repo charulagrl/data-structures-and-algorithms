@@ -5,6 +5,8 @@
 
 	Solution: Take a slow pointer and a fast pointer and faster pointer will iterate twice as fast as slow pointer. If the two meets or 
 	slow pointer gets passed the fast pointer, there is a loop in the linked lists. 
+
+	For explaination: http://stackoverflow.com/questions/2936213/explain-how-finding-cycle-start-node-in-cycle-linked-list-work
 '''
 
 import linked_list

@@ -8,6 +8,8 @@
 
 	Example: 1->2->3->2->1 returns True
 			 1->3->4->3->5 returns False 
+
+	# TODO: Solve this problem by reversing the linked list
 '''
 
 import linked_list
@@ -37,7 +39,6 @@ def check_palindrome(ll):
 		second_half  = second_half.nextnode
 
 	return True
-
 
 if __name__ == "__main__":
 	# Check for the linked list (33 4 8 41 9 6 13 5 4)
