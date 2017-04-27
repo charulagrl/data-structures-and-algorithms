@@ -7,6 +7,8 @@
 
 	It is a divide and conquer algorithm where in each iteration, it neglects 2/3 of the part and repeats the same operation with 
 	the remaining 1/3.
+
+	Complexity: (log N where base is 3)
 '''
 
 def ternary_search(left, right, key, array):
