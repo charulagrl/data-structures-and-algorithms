@@ -33,18 +33,3 @@ def ternary_search(left, right, key, array):
 			return ternary_search(midl+1, midr-1, key, array)
 
 	return -1
-
-# Writing unit-test for the above function
-import unittest
-
-class MyTest(unittest.TestCase):
-	def setUp(self):
-		self.array = [2, 5, 6, 12, 17, 23, 34, 45, 67, 81]
-		self.right = len(self.array)
-		self.key = 23
-
-	def test(self):
-		self.assertEqual(ternary_search(0, self.right, self.key, self.array), 5)
-
-if __name__ == "__main__":
-	unittest.main()

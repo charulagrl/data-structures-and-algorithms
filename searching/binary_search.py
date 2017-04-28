@@ -11,7 +11,7 @@
 
 '''
 
-def binary_search(low, high, array, key):
+def binary_search(low, high, key, array):
 	''' Search for the key and return the index of the key.
 		If not found, returns -1'''
 	while(low <= high):
@@ -28,19 +28,3 @@ def binary_search(low, high, array, key):
 
 
 	return -1
-
-
-# Writing unit-test for the above function
-import unittest
-
-class MyTest(unittest.TestCase):
-	def setUp(self):
-		self.array = [2, 5, 6, 12, 17, 23, 34, 45, 67, 81]
-		self.high = len(self.array)
-		self.key = 23
-
-	def test(self):
-		self.assertEqual(binary_search(0, self.high, self.array, self.key), 5)
-
-if __name__ == "__main__":
-	unittest.main()

@@ -22,17 +22,3 @@ def selection_sort(array):
 			array[i], array[index] = array[index], array[i]
 
 	return array
-
-
-# Writing unit-test for the above function
-import unittest
-
-class MyTest(unittest.TestCase):
-	def setUp(self):
-		self.array = [34, 45, 2, 6, 64, 3, 17, 12, 23,  67, 81, 8]
-
-	def test(self):
-		self.assertEqual(selection_sort(self.array), [2, 3, 6, 8, 12, 17, 23, 34, 45, 64, 67, 81])
-
-if __name__ == "__main__":
-	unittest.main()

@@ -2,48 +2,63 @@
 
 # Knights tour problem
 
-def isSafe(board, x, y, count):
-	if x < 0 or x >= len(board) or y < 0 or y >= len(board):
-		return False
+'''
+	Problem : A knight is placed on the first block of an empty board and, moving according to the rules of chess, must 
+	visit each square exactly once.
+'''
 
-	if board[x][y] != -1:
-		return False
+def get_possible_moves(board, N, row, col):
+	'''Return all the possible moves from the current row and col'''
+	moves = []
 
-	return True
+	for r in [row-2, row+2]:
+		for c in [col-1, col+1]:
+			if r >= 0 and c >= 0 and r < N and c < N and board[r][c] < 0:
+				moves.append((r, c))
 
-def Knights_Tour(board, curr_x, curr_y, count, max_count):
-	x_moves = [-2, -2, -1, -1, 1, 1, 2, 2]
-	y_moves = [-1, 1, -2, 2, -2, 2, -1, 1]
+	for r in [row-1, row+1]:
+		for c in [col-2, col+2]:
+			if r >= 0 and c >= 0 and r < N and c < N and board[r][c] < 0:
+				moves.append((r, c))
 
-	if count == max_count:
+	return moves
+
+
+def knights_tour_backtrack(board, N, row, col, count):
+	'''Backtrack function to visit nodes in a board'''
+
+	# If count is equal to (N*N), it means that knight has visited all the nodes
+	if count == (N * N):
 		return True
-	else:
-		for i in range(len(x_moves)):
-			next_x = curr_x + x_moves[i]
-			next_y = curr_y + y_moves[i]
-			if isSafe(board, next_x, next_y, count):
-				board[next_x][next_y] = count
 
-				if Knights_Tour(board, next_x, next_y, count+1, max_count):
-					return True
+	# Get all the possible moves from the current position
+	possible_moves = get_possible_moves(board, N, row, col)
 
-				board[next_x][next_y] = -1
+	for move in possible_moves:
+		r, c = move
+		# Assign the count value for a row and column when found it is safe
+		board[r][c] = count
+		# Now, visit the board from the current row and column and increase the count by 1
+		if knights_tour_backtrack(board, N, r, c, count+1):
+			return True
+
+		# Backtrack if it's not possible to visit all the nodes
+		board[r][c] = -1
 
 	return False
 
-if __name__=="__main__":
-	board = []
-	N = 8
+def knights_tour(N):
+	'''Initialize a board of size N*N and call backtrack function to place the knights'''
+	board = [[-1] * N for n in range(N)]
 
-	for i in range(N):
-		board.append([-1]*N)
-
+	# Initialize the position of the knight with (0, 0) and count to 0
 	board[0][0] = 0
-	count = 0
-	max_count = len(board)*len(board)
 
-	if Knights_Tour(board, 0, 0, count+1, max_count):
-		for i in board:
-			print i
+	# Calling knights tour for count 1
+	if knights_tour_backtrack(board, N, 0, 0, 1):
+		print board
 	else:
 		print "Solution does not exist"
+
+if __name__ == "__main__":
+	knights_tour(5)
