@@ -2,41 +2,58 @@
 
 # Longest common subsequence
 
+'''
+	Problem: Given two sequences, find the length of longest subsequence present in both of them.
+
+	We can solve this problem by finding all the subsequences of both given sequences and find the longest matching subsequence. 
+	Complexity: Exponential as there are (2 ^ n) possible subsequences of a given sequence and to compare them you will have to loop
+	through all the subsequences of both the sequences. 
+
+	Optimal Substructure: Let's s1 and s2 are the two sequence. If the first letter of both sequence is same, then the problem can 
+	be written as LCS(s1, s2) = LCS(s1[1:], s2[1:]) + 1 otherwise it will be LCS(s1, s2) = max(LCS(s1[1:], s2), LCS(s1, s2[1:])).
+
+	Dynamic Programming: Create a matrix of size [len(S1)+1][len(s2)+1] and initialize it with zero. Loop through both the sequences and 
+'''
+
 # Recursive solution
-def LCS(arr, arr2, m, n):
+def longest_common_subsequence(s1, s2):
+	''' Return length of longest common subsequence using recursion'''
+	if len(s1) == 0 or len(s2) == 0:
+		return  0
 
-	if m == 0 or n == 0:
-		return 0
-
-	if arr[m-1] == arr2[n-1]:
-		return LCS(arr, arr2, m-1, n-1) + 1
+	if s1[0] == s2[0]:
+		return longest_common_subsequence(s1[1:], s2[1:]) + 1
 
 	else:
-		return max(LCS(arr, arr2, m-1, n), LCS(arr, arr2, m, n-1))
+		return max(longest_common_subsequence(s1[1:], s2), longest_common_subsequence(s1, s2[1:]))
 
-# Dynamic PRogramming solution
-def LCS_dynamic(arr, arr2, m, n):
-	soln = []
-	for i in range(m+1):
-		soln.append([0]*(n+1))
+def longest_common_subsequence_dynamic(s1, s2):
+	''' Dynamic Programming approach to find the length of longest common subsequence'''
+	m = len(s1) + 1
+	n = len(s2) + 1
 
-	for i in range(m+1):
-		soln[i][0] = 0
-
-	for j in range(n+1):
-		soln[0][j] = 0
-
-	for i in range(1, m+1):
-		for j in range(1, n+1):
-			if arr[i-1] == arr2[j-1]:
+	soln = [[0] * n for i in range(m)]
+	for i in range(1, m):
+		for j in range(1, n):
+			if s1[i-1] == s2[j-1]:
 				soln[i][j] = soln[i-1][j-1] + 1
 			else:
 				soln[i][j] = max(soln[i-1][j], soln[i][j-1])
 
-	return soln[m][n]
+	return soln[m-1][n-1]
 
-str1 = "AGGTAB"
-str2 = "GXTXAYB"
-print LCS(str1, str2, len(str1), len(str2))
-print "Dynamic programming soln"
-print LCS_dynamic(str1, str2, len(str1), len(str2))
+import unittest
+
+class MyTest(unittest.TestCase):
+	def setUp(self):
+		self.str1 = "AGGTAB"
+		self.str2 = "GXTXAYB"
+
+	def test_lcs_recursive(self):
+		self.assertEqual(longest_common_subsequence(self.str1, self.str2), 4)
+
+	def test_lcs_dynamic(self):
+		self.assertEqual(longest_common_subsequence_dynamic(self.str1, self.str2), 4)
+
+if __name__ == "__main__":
+	unittest.main()
