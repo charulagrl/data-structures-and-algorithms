@@ -1,44 +1,65 @@
 # -*- coding: UTF-8 -*-
 
-# Program to solve coin change problem
+'''
+	coin change problem
 
-# Recursive implementation
-def coin_change(N, S):
-	
-	if N == 0:
+	Given a value N, if we want to make change for N cents, and we have infinite supply of each of S = { S1, S2, .. , Sm} 
+	valued coins, how many ways can we make the change? 
+'''
+
+def coin_change(coins, total):
+	'''Find the number of possible ways to make the change'''
+
+	# When total is 0, we have got a set, hence returns 1
+	if total == 0:
 		return 1
 
-	if N < 0:
+	# When total < 0, no set possible, returns 0
+	if total < 0:
 		return 0
-
-	if len(S) <= 0 and N >= 1:
+	
+	if not coins and total:
 		return 0
+	
+	else: 
+		# It involves two cases:
+		# 1. When the coin at 0 index is part of the set, then the set will remain same and total will reduce
+		# 2. When the coin at 0 index is not part of the set, then the set will remove the coin[0] and total will remain same
+		return coin_change(coins, total - coins[0]) + coin_change(coins[1:], total)
 
-	else:
-		return coin_change(N-S[-1], S) + coin_change(N, S[0:-1])
 
+def coin_change_dynamic(coins, total):
+	'''Return the number of ways to to make the change using dynamic approach'''
+	result = [[0] * len(coins) for i in range(total+1)] 
 
+	for i in range(total+1):
+		for j, coin in enumerate(coins):
+			if i == 0:
+				result[i][j] = 1
+			else:
+				# When the coin is part of the solution
+				x = result[i-coin][j] if i - coin >= 0 else 0
+				# When coin is not part of the solution
+				y = result[i][j-1] if j >= 1 else 0
+				
+				# total count
+				result[i][j] = x + y
 
-# Dynamic Programming Solution
-def coin_change_dp(N, S):
-	soln = []
-	for i in range(N+1):
-		soln.append([0]*len(S))
+	return result[total][len(coins)-1]
 
-	for i in range(len(S)):
-		soln[0][i] = 1
+# Writing unittest for the above functions
+import unittest
 
-	for i in range(1, N+1):
-		for j in range(0, len(S)):
-			x = soln[i - S[j]][j] if i-S[j] >= 0 else 0
-			y = soln[i][j-1] if j>=1 else 0
+class MyTest(unittest.TestCase):
+	def setUp(self):
+		self.total = 4
+		self.coins = [1, 2, 3]
 
-			soln[i][j] = x+y
+	def test_coin_change_recursive(self):
+		self.assertEqual(coin_change(self.coins, self.total), 4)
 
-	return soln[N][len(S)-1]
+	def test_coin_change_dynamic(self):
+		self.assertEqual(coin_change_dynamic(self.coins, self.total), 4)
 
-N = 4
-S = [1, 2, 3]
-
-count = coin_change_dp(N, S)
-print count
+if __name__ == "__main__":
+	unittest.main()
