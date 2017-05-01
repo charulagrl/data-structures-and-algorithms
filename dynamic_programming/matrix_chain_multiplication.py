@@ -3,52 +3,73 @@
 # Matrix chain multiplication
 import sys
 
-# Recursive implementation
-def matrix(arr, i, j):
+def matrix_multiplication(array):
+	'''Recursive implementation to find the minimum cost of matrix multiplication'''
+	min_cost = sys.maxint
 
+	if len(array) < 3:
+		return 0
+
+	for i in range(1, len(array)-1):
+		cost =  (array[i-1] * array[i] * array[i+1]) + matrix_multiplication((array[:i] + array[i+1:]))
+		if cost < min_cost:
+			min_cost = cost
+
+	return min_cost
+
+def matrix_multiplication_2(arr, i, j):
+	'''Recursive implementation by passing indexes in the argument'''
 	min_count = sys.maxint
+
 	if i == j:
 		return 0
 
 	for k in range(i, j):
-
-		count = matrix(arr, i, k) + matrix(arr, k+1, j) + arr[i-1]*arr[k]*arr[j]
+		count = matrix_multiplication_2(arr, i, k) + matrix_multiplication_2(arr, k+1, j) + arr[i-1]*arr[k]*arr[j]
 
 		if count < min_count:
 			min_count = count
 
 	return min_count
 
-
-# DP implementation
-def matric_dynamic(arr):
+def matrix_dynamic(arr):
+	'''Minimum count of matrix multiplication using dynamic implementation'''
 	n = len(arr)
 
-	mat = []
-	# initialize n * n matrix with None
-	for i in range(n):
-		mat.append([None]*n)
-
-	# Cost would be zero when multiplying one matrix
-	for i in range(n):
-		mat[i][i] = 0
+	# Initialize n * n matrix with None
+	mat = [[0] * n for i in range(n)]
 
 	# Considering all the possible chain lengths
 	for L in range(2, n):
 		for i in range(n-L+1):
 			j = i+L-1
-			mat[i][j] = sys.maxint
-			for k in range(i, j):
-				res = mat[i][k] + mat[k+1][j] + arr[i-1] * arr[k] * arr[j]
+			# Cost would be zero when multiplying one matrix
+			if i == j:
+				matrix[i][j] = 0
+			else:
+				mat[i][j] = sys.maxint
+				for k in range(i, j):
+					res = mat[i][k] + mat[k+1][j] + arr[i-1] * arr[k] * arr[j]
 
-				if res < mat[i][j]:
-					mat[i][j] = res
+					if res < mat[i][j]:
+						mat[i][j] = res
 
 	return mat[1][n-1]
 
-	
-arr = [40, 20, 30, 10, 30]
-min_count = matrix(arr, 1, len(arr)-1)
-print min_count
-print "Solving by dynammic programming"
-print matric_dynamic(arr)
+import unittest
+
+class MyTest(unittest.TestCase):
+	def setUp(self):
+		self.array = [40, 20, 30, 10, 30]
+
+	def test_recursive_matrix_multiplication(self):
+		self.assertEqual(matrix_multiplication(self.array), 26000)
+
+	def test_recursive_matrix_multiplication_2(self):
+		self.assertEqual(matrix_multiplication_2(self.array, 1, len(self.array)-1), 26000)
+
+	def test_matrix_dynamic(self):
+		self.assertEqual(matrix_dynamic(self.array), 26000)
+
+if __name__ == "__main__":
+	unittest.main()
