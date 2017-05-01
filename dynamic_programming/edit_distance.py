@@ -5,6 +5,10 @@
 ''' 
 	Given two strings of size m, n and set of operations replace (R), insert (I) and delete (D) all at equal cost. Find minimum 
 	number of edits (operations) required to convert one string into another.
+
+	Time Complexity(Recursive): Worst case time-complexity of recursive solution can be O(3^m)
+
+	Time Complexity(Dynamic): Worst case time-complexity of dynamic solution can be O(m*n)
 '''
 import sys
 
