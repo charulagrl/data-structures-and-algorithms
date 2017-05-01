@@ -2,7 +2,7 @@
 
 # Program to do a breadth first traversal of a graph
 
-import graph
+from data_structures import graph
 
 def bfs(graph, start):
 
@@ -21,8 +21,7 @@ def bfs(graph, start):
 			if k not in visited:
 				visited.append(k)
 				queue.append(k)
-		
 
-if __name__=='__main__':
+if __name__ == '__main__':
 	graph = graph.construct_graph()
 	bfs(graph, 2)

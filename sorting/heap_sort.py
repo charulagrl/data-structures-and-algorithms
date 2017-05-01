@@ -1,3 +1,5 @@
+# coding: UTF-8
+
 class MaxHeap(object):
 	def __init__(self, size=None, array=None):
 		self.size = size
