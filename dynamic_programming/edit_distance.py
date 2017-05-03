@@ -54,6 +54,7 @@ def edit_distance_dynamic(s1, s2):
 				sol[i][j] = sol[i-1][j-1]
 			
 			else:
+				# insertion, deletion and editing
 				sol[i][j] = min(sol[i][j-1], sol[i-1][j], sol[i-1][j-1]) + 1
 
 	return sol[m][n]  

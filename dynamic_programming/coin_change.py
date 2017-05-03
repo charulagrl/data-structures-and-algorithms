@@ -11,7 +11,7 @@ def coin_change(coins, total):
 	'''Find the number of possible ways to make the change'''
 
 	# When total is 0, we have got a set, hence returns 1
-	if total == 0:
+	if not total:
 		return 1
 
 	# When total < 0, no set possible, returns 0
@@ -34,7 +34,7 @@ def coin_change_dynamic(coins, total):
 
 	for i in range(total+1):
 		for j, coin in enumerate(coins):
-			if i == 0:
+			if not i:
 				result[i][j] = 1
 			else:
 				# When the coin is part of the solution
