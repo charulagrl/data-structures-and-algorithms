@@ -2,9 +2,18 @@
 
 # Program to find longest increasing subsequence (LIS)
 
+'''
+	The Longest Increasing Subsequence (LIS) problem is to find the length of the longest subsequence of a given sequence 
+	such that all elements of the subsequence are sorted in increasing order.
+
+	For example, the length of
+		LIS for {10, 22, 9, 33, 21, 50, 41, 60, 80} is 6 and
+		LIS is {10, 22, 33, 50, 60, 80}.
+'''
 import sys
 max_lis_length = -sys.maxint
 
+# Time complexity: o(2^n) as for there are total of 2^n combinations possible.
 def longest_increasing_subsequence(array, length):
 	'''Recursive implementation to find the length of longest increasing subsequence'''
 	global max_lis_length
@@ -27,6 +36,7 @@ def longest_increasing_subsequence(array, length):
 
 	return current_lis_length
 
+# Time Complexity: O(n * 2)
 def longest_increasing_subsequence_dynamic(array, length):
 	'''Using dynamic programming to find the length of longest increasing subsequence'''
 	lis = [1] * length

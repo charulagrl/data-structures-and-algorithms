@@ -1,4 +1,4 @@
-# Writing unit-test for the above function
+# Writing unit-test for the searching algorithms
 import unittest
 
 '''Test cases for searching functions'''
