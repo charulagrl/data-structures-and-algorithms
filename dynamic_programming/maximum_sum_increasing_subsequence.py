@@ -6,6 +6,7 @@ import sys
 
 max_sum = -sys.maxint
 
+# Time complexity: O(2 ^ n) which is the total number of subsequences possible
 def maximum_sum_recursive(array, index):
 	'''Calculating maximum sum increasing subsequence using recursion'''
 	global max_sum
@@ -29,6 +30,7 @@ def maximum_sum_recursive(array, index):
 
 	return max_value
 
+# Time complexity: O(n*n)
 def maximum_sum_dynamic(arr):
 	'''Calculating maximum sum increasing subsequence using dynamic programming'''
 	soln = [-sys.maxint] * len(arr)
