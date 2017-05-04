@@ -2,32 +2,36 @@
 
 # Maximum Sum Increasing subsequence
 
-maximum_s = -10000000
+import sys
 
-# Recursive implementation
-def maximum_sum(arr, index):
+max_sum = -sys.maxint
 
-	global maximum_s
+def maximum_sum_recursive(array, index):
+	'''Calculating maximum sum increasing subsequence using recursion'''
+	global max_sum
+
+	# IF there is only one element present. 
 	if index == 1:
-		return arr[index-1]
+		return array[index-1]
 
 	else:
-		max_value = -100000000
+		max_value = -sys.maxint
 
 		for i in range(1, index):
-			res = maximum_sum(arr, i)
+			res = maximum_sum_recursive(array, i)
 
-			if arr[index-1] > arr[i-1] and res + arr[index-1] > max_value:
-				max_value = res + arr[index-1]
+			if array[i-1] < array[index-1] and res + array[index-1] > max_value:
+				max_value = res + array[index-1]
 
-		if max_value > maximum_s:
-			maximum_s = max_value
+		if max_value > max_sum:
+			max_sum = max_value
+	 	
 
-		return max_value
-
+	return max_value
 
 def maximum_sum_dynamic(arr):
-	soln = [None] * len(arr)
+	'''Calculating maximum sum increasing subsequence using dynamic programming'''
+	soln = [-sys.maxint] * len(arr)
 
 	for i in range(len(arr)):
 		soln[i] = arr[i]
@@ -38,11 +42,21 @@ def maximum_sum_dynamic(arr):
 				soln[i] = soln[j] + arr[i]
 
 
-	print max(soln)
+	return max(soln)
 
-arr = [1, 101, 2, 3, 100, 4, 5]
-maximum_sum(arr, len(arr))
-print maximum_s
-print "Solving by DP"
-maximum_sum_dynamic(arr)
+import unittest
 
+class MyTest(unittest.TestCase):
+	def setUp(self):
+		self.sequence = [1, 101, 2, 3, 100, 4, 5]
+		self.length = len(self.sequence)
+	
+	def test_maximum_sum_recursive(self):
+		maximum_sum_recursive(self.sequence, self.length)
+		self.assertEqual(max_sum, 106)
+
+	def test_maximum_sum_dynamic(self):
+		self.assertEqual(maximum_sum_dynamic(self.sequence), 106)
+
+if __name__ == "__main__":
+	unittest.main()
