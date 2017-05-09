@@ -32,11 +32,11 @@ def matrix_multiplication(array):
 
 def matrix_multiplication_2(arr, i, j):
 	'''Recursive implementation by passing indexes in the argument'''
-	min_count = sys.maxint
 
 	if i == j:
 		return 0
 
+	min_count = sys.maxint
 	for k in range(i, j):
 		count = matrix_multiplication_2(arr, i, k) + matrix_multiplication_2(arr, k+1, j) + arr[i-1]*arr[k]*arr[j]
 

@@ -41,7 +41,7 @@ def longest_increasing_subsequence_dynamic(array, length):
 	'''Using dynamic programming to find the length of longest increasing subsequence'''
 	lis = [1] * length
 
-	for i in range(length):
+	for i in range(1, length):
 		for j in range(i):
 			if (array[j] < array[i] and lis[i] < lis[j] + 1):
 				lis[i] = lis[j] + 1

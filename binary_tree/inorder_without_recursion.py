@@ -2,36 +2,35 @@
 
 import binary_tree
 
-# Program to print inorder traversal of tree without using recursion
+# Program to print inorder traversal of tree without using recursion and using stack
 
 def inorder_without_recursion(node):
 	if node is None:
 		return
 
 	stack = []
-	curr = node
+	current = node
 	done = False
 
 	while(not done):
 
-		if curr:
-			stack.append(curr)
-			curr = curr.left
+		if current:
+			stack.append(current)
+			current = current.left
 
 		else:
 			if stack:
-				temp = stack[-1]
-				print temp.data
-				del stack[-1]
+				last_item = stack.pop(-1)
+				print last_item.data
 
-				if temp.right != None:
-					curr = temp.right
+				if last_item.right != None:
+					current = last_item.right
 
 			else:
 				done = True
 
-if __name__=='__main__':
+if __name__ == '__main__':
 	tree = binary_tree.construct_binary_tree()
 
-	print "without recursion"
+	print "Inorder traversal without using recursion"
 	inorder_without_recursion(tree.root)

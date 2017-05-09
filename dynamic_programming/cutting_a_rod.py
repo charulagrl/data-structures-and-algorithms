@@ -8,7 +8,6 @@
 '''
 import sys
 
-
 def cutting_a_rod(length, values):
 	'''Recursive implementation to find the maximum values obtained by cutting a rod'''
 	# If length is less than or equal to 0
@@ -38,31 +37,18 @@ def cutting_a_rod_dynamic(values, length):
 
 	return soln[length]
 
-def cut_a_rod(index, price, length):
-	if not length or not price:
+def cutting_a_rod_recursive(length, values, index):
+	if length <= 0 or index < 0:
 		return 0
 
-	if length < index:
-		return cut_a_rod(index+1, price[1:], length)
+	if length == 1:
+		return values[0]
 
 	else:
-		return max(cut_a_rod(index, price, length-index) + price[0], cut_a_rod(index+1, price[1:], length))
+		included = cutting_a_rod_recursive(length-index-1, values, index) + values[index]
+		not_included = cutting_a_rod_recursive(length, values, index-1)
 
-def cut_a_rod_dynamic(price, length):
-	cost = [[0] * (length+1) for i in range(length+1)]
-
-	for i in range(length+1):
-		for j in range(length):
-			if not i or not j:
-				cost[i][j] = 0
-			elif i > j:
-				cost[i][j] = max(cost[i-j-1][j] + price[j-1], cost[i][j])
-			else:
-				cost[i][j] = cost[i][j-1]
-
-		print cost
-	return cost[length][length]
-
+		return max(included, not_included)
 
 import unittest
 
@@ -74,15 +60,12 @@ class MyTest(unittest.TestCase):
 	def test_cutting_a_rod(self):
 		self.assertEqual(cutting_a_rod(self.length, self.price), 10)
 
-	def test_cuttin_a_rod_dynamic(self):
+	def test_cutting_a_rod_dynamic(self):
 		self.assertEqual(cutting_a_rod_dynamic(self.price, self.length), 10)
 
 	def test_cut_a_rod_recursive(self):
-		self.assertEqual(cut_a_rod(1, self.price, self.length), 10)
+		self.assertEqual(cutting_a_rod_recursive(self.length, self.price, self.length-1), 10)
 
-	def test_cut_a_rod_dynamic(self):
-		self.assertEqual(cut_a_rod_dynamic(self.price, self.length), 10)
 
 if __name__ == "__main__":
 	unittest.main()
-

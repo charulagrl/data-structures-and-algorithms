@@ -22,6 +22,8 @@ def min_cost_recursive(cost, i, j, m, n):
 		# Return the minimum of all the cost + cost of the cell itself
 		return min(down, right, diagonal) + cost[i][j]
 
+
+# Time-complexity: Exponential O(2^n) as each cell has 2 options either can be included in the path or not.
 def min_cost(cell, i, j):
 	'''Recursive approach to solve minimum cost path problem. Starts from the final cell and calculate the cost of reaching
 		the initial cell at index 0, 0. 
@@ -39,7 +41,7 @@ def min_cost(cell, i, j):
 
 		return min(min_left, min(min_top, min_diagonal)) + cell[i][j]
 
-
+# Time-complexity: O(m*n) where m, n are dimensions of the matrix
 def min_cost_dynamic(cell):
 	'''Dynamic Programming approach to minimum cost path problem'''
 	m = len(cell)

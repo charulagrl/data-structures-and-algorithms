@@ -7,6 +7,7 @@
 	valued coins, how many ways can we make the change? 
 '''
 
+# Time complexity: O(2^n) as each coin has two possibility either included or not included
 def coin_change(coins, total):
 	'''Find the number of possible ways to make the change'''
 
@@ -27,7 +28,7 @@ def coin_change(coins, total):
 		# 2. When the coin at 0 index is not part of the set, then the set will remove the coin[0] and total will remain same
 		return coin_change(coins, total - coins[0]) + coin_change(coins[1:], total)
 
-
+# Time complexity: O(m*n)
 def coin_change_dynamic(coins, total):
 	'''Return the number of ways to to make the change using dynamic approach'''
 	result = [[0] * len(coins) for i in range(total+1)] 

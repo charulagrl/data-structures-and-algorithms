@@ -5,14 +5,14 @@
 '''
 	Problem: Given two sequences, find the length of longest subsequence present in both of them.
 
-	We can solve this problem by finding all the subsequences of both given sequences and find the longest matching 
+	We can solve this problem by finding all the subsequences of both given sequences and find the longest matching
 	subsequence.
 
-	Complexity: Exponential as there are (2 ^ n) possible subsequences of a given sequence and to compare 
+	Complexity: Exponential as there are (2 ^ n) possible subsequences of a given sequence and to compare
 	them you will have to loop through all the subsequences of both the sequences.
 
-	Optimal Substructure: Let's s1 and s2 are the two sequence. If the first letter of both sequence is same, then the 
-	problem can be written as LCS(s1, s2) = LCS(s1[1:], s2[1:]) + 1 otherwise it will be 
+	Optimal Substructure: Let's s1 and s2 are the two sequence. If the first letter of both sequence is same, then the
+	problem can be written as LCS(s1, s2) = LCS(s1[1:], s2[1:]) + 1 otherwise it will be
 	LCS(s1, s2) = max(LCS(s1[1:], s2), LCS(s1, s2[1:])).
 '''
 
@@ -31,18 +31,18 @@ def longest_common_subsequence(s1, s2):
 # Time complexity: O(m * n) where m is length of string 1 and n is length of string 2
 def longest_common_subsequence_dynamic(s1, s2):
 	''' Dynamic Programming approach to find the length of longest common subsequence'''
-	m = len(s1) + 1
-	n = len(s2) + 1
+	m = len(s1)
+	n = len(s2)
 
-	soln = [[0] * n for i in range(m)]
-	for i in range(1, m):
-		for j in range(1, n):
+	soln = [[0] * (n+1) for i in range(m+1)]
+	for i in range(1, m+1):
+		for j in range(1, n+1):
 			if s1[i-1] == s2[j-1]:
 				soln[i][j] = soln[i-1][j-1] + 1
 			else:
 				soln[i][j] = max(soln[i-1][j], soln[i][j-1])
 
-	return soln[m-1][n-1]
+	return soln[m][n]
 
 import unittest
 

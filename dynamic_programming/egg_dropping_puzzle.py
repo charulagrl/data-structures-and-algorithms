@@ -22,7 +22,7 @@ import sys
 def egg_drop(eggs, floor):
 	# If no floor is present, then no trial is needed
 	if not floor:
-		return 1
+		return 0
 
 	# If one floor is there, only one trial is required
 	if floor == 1:
