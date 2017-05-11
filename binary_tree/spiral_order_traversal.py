@@ -5,18 +5,19 @@
 import binary_tree
 
 def spiral_order_traversal(root):
+	'''Print the level order traversal in spiral way'''
 	if not root:
 		return
 
+	# It can be done uisng two stacks
 	s1 = [root]
 	s2 = []
 
 	while s1 or s2:
 
 		while s1:
-			s = s1[0]
+			s = s1.pop(-1)
 			print s.data
-			del s1[0]
 
 			if s.right:
 				s2.append(s.right)
@@ -25,9 +26,8 @@ def spiral_order_traversal(root):
 				s2.append(s.left)
 
 		while s2:
-			s = s2[0]
+			s = s2.pop(-1)
 			print s.data
-			del s2[0]
 
 			if s.left:
 				s1.append(s.left)
@@ -35,5 +35,6 @@ def spiral_order_traversal(root):
 			if s.right:
 				s1.append(s.right)
 
-tree = binary_tree.construct_binary_tree()
-spiral_order_traversal(tree.root)
+if __name__ == "__main__":
+	tree = binary_tree.construct_binary_tree()
+	spiral_order_traversal(tree.root)

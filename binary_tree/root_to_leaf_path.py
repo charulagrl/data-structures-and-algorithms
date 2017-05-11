@@ -5,6 +5,7 @@
 import binary_tree
 
 def root_to_leaf(root, path, index):
+	'''Print all the root to leaf paths'''
 	
 	if not root:
 		return
@@ -22,6 +23,7 @@ def root_to_leaf(root, path, index):
 		root_to_leaf(root.left, path, index+1)
 		root_to_leaf(root.right, path, index+1)
 
-tree = binary_tree.construct_binary_tree()
+if __name__ == "__main__":
+	tree = binary_tree.construct_binary_tree()
 
-root_to_leaf(tree.root, [], 0)
+	root_to_leaf(tree.root, [], 0)

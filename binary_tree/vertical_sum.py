@@ -3,27 +3,25 @@
 import binary_tree
 
 # Program to find vertical sum of a tree. 
-# HD for root is 0, a right edge (edge connecting to right subtree) is considered as +1 horizontal distance and a left edge is considered as -1 horizontal distance. 
+'''
+	hd for root is 0, a right edge (edge connecting to right subtree) is considered as +1 horizontal distance
+	and a left edge is considered as -1 horizontal distance.
+'''
 
-def vertical_sum(root, hd, sum_dict):
-
+def vertical_sum(root, distance, hash_map):
+	'''Calculate the vertical sum of a tree'''
 	if root is None:
 		return
 
-	else:
-		if hd in sum_dict.keys():
-			sum_dict[hd] += root.data
-		else:
-			sum_dict[hd] = root.data
+	hash_map.setdefault(distance, 0)
+	hash_map[distance] += root.data
 
+	vertical_sum(root.left, distance-1, hash_map)
+	vertical_sum(root.right, distance+1, hash_map)
 
-	vertical_sum(root.left, hd-1, sum_dict)
-	vertical_sum(root.right, hd+1, sum_dict)
+if __name__ == "__main__":
+	tree = binary_tree.construct_binary_tree()
 
-
-tree = binary_tree.construct_binary_tree()
-
-sum_dict = {}
-vertical_sum(tree.root, 0, sum_dict)
-
-print sum_dict
+	sum_dict = {}
+	vertical_sum(tree.root, 0, sum_dict)
+	print sum_dict

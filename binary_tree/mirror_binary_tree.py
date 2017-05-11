@@ -5,11 +5,11 @@
 import binary_tree
 
 def mirror(root):
+	'''Convert the tree to its mirror tree'''
 	if root is None or (root.left is None and root.right is None):
 		return
 
 	else:
-
 		mirror(root.left)
 		mirror(root.right)
 
@@ -19,9 +19,8 @@ def mirror(root):
 
 if __name__=="__main__":
 	tree = binary_tree.construct_binary_tree()
-
+	tree.inorder(tree.root)
+	# Change the tree to its mirror tree
 	mirror(tree.root)
 	print "After changing the tree to its mirror"
 	tree.inorder(tree.root)
-
-

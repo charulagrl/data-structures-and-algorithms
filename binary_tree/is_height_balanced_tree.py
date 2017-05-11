@@ -5,29 +5,28 @@
 import binary_tree
 
 def height(root):
-		if root is None:
-			return 0
+	'''Calculate the height of the tree'''
+	if root is None:
+		return 0
 
-		else:
-			l = height(root.left)
-			r = height(root.right)
+	else:
+		left_height = height(root.left)
+		right_height = height(root.right)
 
-			if l > r:
-				return l + 1
-			else:
-				return r + 1
+		return max(left_height, right_height) + 1
 
 def is_balanced_tree(node):
-
+	'''Return true if tree is height balanced'''
 	if node == None:
 		return True
 
 	else:
-		l = height(node.left)
-		r = height(node.right)
+		left_height = height(node.left)
+		right_height = height(node.right)
 
-		if abs(l-r) <= 1 and is_balanced_tree(node.left) and is_balanced_tree(node.right):
+		if abs(left_height - right_height) <= 1 and is_balanced_tree(node.left) and is_balanced_tree(node.right):
 			return True
+
 		return False
 
 if __name__=="__main__":

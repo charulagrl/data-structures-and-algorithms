@@ -5,17 +5,16 @@
 import binary_tree
 
 def iterative_preorder(root):
+	'''Print preorder traversal using stack'''
 	if root is None:
 		return
 
 	stack = [root]
 	curr = root
-	done = False
 
 	while stack:
-		s = stack[-1]
+		s = stack.pop(-1)
 		print s.data
-		del stack[-1]
 
 		if s.right:
 			stack.append(s.right)
@@ -23,5 +22,6 @@ def iterative_preorder(root):
 		if s.left:
 			stack.append(s.left)
 
-tree = binary_tree.construct_binary_tree()
-iterative_preorder(tree.root)
+if __name__ == "__main__":
+	tree = binary_tree.construct_binary_tree()
+	iterative_preorder(tree.root)

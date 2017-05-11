@@ -7,6 +7,7 @@ import binary_tree
 max_sum = 0
 
 def maximum_root_to_leaf(root, path, index):
+	'''Calculate the maximu root to leaf path'''
 	global max_sum
 
 	if not root:
@@ -26,8 +27,8 @@ def maximum_root_to_leaf(root, path, index):
 		maximum_root_to_leaf(root.left, path, index+1)
 		maximum_root_to_leaf(root.right, path, index+1)
 
-tree = binary_tree.construct_binary_tree()
+if __name__ == "__main__":
+	tree = binary_tree.construct_binary_tree()
 
-maximum_root_to_leaf(tree.root, [], 0)
-
-print max_sum
+	maximum_root_to_leaf(tree.root, [], 0)
+	print max_sum

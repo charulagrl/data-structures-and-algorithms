@@ -5,6 +5,7 @@ import binary_tree
 # Program to check if a tree is subtree of another tree
 
 def check_for_rest_of_tree(tree_a, tree_b):
+	'''Check if two trees are identical trees'''
 	if not tree_a and not tree_b:
 		return True
 	
@@ -12,32 +13,31 @@ def check_for_rest_of_tree(tree_a, tree_b):
 		return True
 	
 	else:
-		if tree_a.data == tree_b.data and check_for_rest_of_tree(tree_a.left, tree_b.left) and check_for_rest_of_tree(tree_a.right, tree_b.right):
+		if tree_a.data == tree_b.data and check_for_rest_of_tree(tree_a.left, tree_b.left)\
+			and check_for_rest_of_tree(tree_a.right, tree_b.right):
 			return True
 		
 		else:
 			return False
 
-def check_subtree(root, root1):
-
-	if root is None:
+def check_subtree(root1, root2):
+	'''Check if tree2 is a subtree of tree 1'''
+	if root1 is None:
 		return False
 
-	if root1 is None:
+	if root2 is None:
 		return True
 
 	else:
 
-		if root.data == root1.data:
-			if check_for_rest_of_tree(root, root1):
+		if root1.data == root2.data:
+			if check_for_rest_of_tree(root1, root2):
 				return True
 
 		return check_subtree(root.left, root1)
-		return check_subtree(root.right, root1)
-
+		return check_subtree(root.right, root2)
 
 if __name__=='__main__':
-
 	tree = binary_tree.construct_binary_tree()
 
 	# initialize root node of a tree
@@ -56,4 +56,3 @@ if __name__=='__main__':
 	tree1.inorder(tree1.root)
 	
 	print check_subtree(tree.root, tree1.root)
-

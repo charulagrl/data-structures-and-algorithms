@@ -2,9 +2,13 @@
 
 # Boundary Traversal
 
+'''
+	Given a binary tree, print boundary nodes of the binary tree Anti-Clockwise starting from the root.
+'''
 import binary_tree
 
 def printBoundaryLeft(root):
+	'''Print left boundary of the tree'''
 	if not root:
 		return
 
@@ -16,6 +20,7 @@ def printBoundaryLeft(root):
 		printBoundaryLeft(root.right)
 
 def printLeaves(root):
+	'''Print leaf nodes of a binary tree'''
 	if not root:
 		return
 
@@ -27,6 +32,7 @@ def printLeaves(root):
 	printLeaves(root.right)
 
 def printBoundaryRight(root):
+	'''Print right boundary of the binary tree'''
 	if not root:
 		return
 
@@ -38,6 +44,7 @@ def printBoundaryRight(root):
 		printBoundaryRight(root.left)
 
 def printBoundary(root):
+	'''Print the boundary traversal of a tree'''
 	if not root:
 		return
 
@@ -49,6 +56,6 @@ def printBoundary(root):
 
 	printBoundaryRight(root.right)
 
-if __name__=="__main__":
+if __name__ == "__main__":
 	tree = binary_tree.construct_binary_tree()
 	printBoundary(tree.root)

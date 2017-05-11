@@ -5,7 +5,7 @@
 import binary_tree
 
 def find_ancestors(root, node, index, path):
-
+	'''Print all the ancestors of a node'''
 	if root is None:
 		return
 
@@ -22,7 +22,6 @@ def find_ancestors(root, node, index, path):
 		find_ancestors(root.left, node, index+1, path)
 		find_ancestors(root.right, node, index+1, path)
 
-
-tree = binary_tree.construct_binary_tree()
-find_ancestors(tree.root, 8, 0, [])
-
+if __name__ == "__main__":
+	tree = binary_tree.construct_binary_tree()
+	find_ancestors(tree.root, 4, 0, [])

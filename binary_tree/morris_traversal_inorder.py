@@ -1,35 +1,43 @@
 # -*- coding: UTF-8 -*-
 
-# Morris Traversal: Inorder traversal without recursion and stack
+# Morris Traversal: Inorder binary tree traversal without recursion and stack
 
 import binary_tree
 
-def traverse(root):
+def find_inorder_pred(current):
+	'''Find inorder predecessor of a node'''
+	pred = current.left
+	if pred.right is not None and pred.right != current:
+		pred = pred.right
+
+	return pred
+
+def inorder(root):
+	'''Print inorder traversal of a binary tree'''
 	if root is None:
-		return 
+		return
 
-	curr = root
+	current = root
 
-	while curr:
-		if not curr.left:
-			print curr.data
-			curr = curr.right
+	while current is not None:
+		if current.left is None:
+			print current.data
+			current = current.right
 
-		else:
-			pre = curr.left
+		elif current.left is not None:
+			pred = find_inorder_pred(current)
 
-			while pre.right and pre.right != curr:
-				pre = pre.right
-
-			if pre.right == None:
-				pre.right = curr
-				curr = curr.left
+			if pred.right is None:
+				pred.right = current
+				current = current.left
 
 			else:
-				pre.right = None
-				print curr.data
-				curr = curr.right
+				pred.right = None
+				print current.data
+				current = current.right
 
-tree = binary_tree.construct_binary_tree()
+if __name__ == "__main__":
+	# construct binary tree
+	tree = binary_tree.construct_binary_tree()
 
-traverse(tree.root)
+	inorder(tree.root)

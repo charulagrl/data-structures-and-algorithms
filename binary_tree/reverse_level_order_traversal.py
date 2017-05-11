@@ -1,11 +1,12 @@
 # -*- coding: UTF-8 -*-
 
-# Print reverse level order traversal
+# Print reverse level order traversal. The idea is to print last level first, then second last level, and so on.
 
 from Queue import *
 import binary_tree
 
 def reverse_level_order(root):
+	'''Print reverse level order traversal of a tree'''
 	if not root:
 		return
 
@@ -27,6 +28,6 @@ def reverse_level_order(root):
 		s = stack.pop()
 		print s.data
 
-tree = binary_tree.construct_binary_tree()
-
-reverse_level_order(tree.root)
+if __name__ == "__main__":
+	tree = binary_tree.construct_binary_tree()
+	reverse_level_order(tree.root)

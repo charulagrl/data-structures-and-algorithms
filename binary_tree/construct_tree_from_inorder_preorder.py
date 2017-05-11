@@ -4,34 +4,31 @@
 
 import binary_tree
 
-pre_index = 0
+preindex = 0
 
-def search(inorder, data):
-	if data in inorder:
-		return inorder.index(data)
-	else:
-		raise ValueError("Data not present in inorder list")
+def construct_tree(preorder, inorder, start, end):
+	global preindex
 
-def construct_tree(inorder, preorder, s_in, e_in):
-	global pre_index
-
-	if s_in > e_in:
+	if start > end:
 		return
 
-	root = binary_tree.Node(preorder[pre_index])
+	root = binary_tree.Node(preorder[preindex])
+	preindex += 1
 
-	pre_index += 1
+	if start == end:
+		return root
 
-	ind = search(inorder, root.data)
-
-	root.left = construct_tree(inorder, preorder, s_in, ind-1)
-	root.right = construct_tree(inorder, preorder, ind+1, e_in)
+	index = inorder.index(root.data)
+	
+	if index >= 0:
+		root.left = construct_tree(preorder, inorder, start, index-1)
+		root.right = construct_tree(preorder, inorder, index+1, end)
 
 	return root
 
 if __name__=="__main__":
 
-	root = construct_tree([4, 2, 5, 1, 3], [1, 2, 4, 5, 3], 0, 4)
+	root = construct_tree([1, 2, 4, 5, 3], [4, 2, 5, 1, 3], 0, 4)
 
 	tree = binary_tree.Tree(root)
 
