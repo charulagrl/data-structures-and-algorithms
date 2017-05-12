@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 
-# Iterative postorder traversal
+# Iterative postorder traversal using two stacks
 
 import binary_tree
 
@@ -12,9 +12,8 @@ def postorder(root):
 	stack2 = []
 
 	while stack1:
-		s = stack1[-1]
+		s = stack1.pop(-1)
 		stack2.append(s)
-		del stack1[-1]
 
 		if s.left:
 			stack1.append(s.left)
@@ -23,11 +22,9 @@ def postorder(root):
 			stack1.append(s.right)
 
 	while(stack2):
-
-		s = stack2[-1]
+		s = stack2.pop(-1)
 		print s.data
-		del stack2[-1]
 
-
-tree = binary_tree.construct_binary_tree()
-postorder(tree.root)
+if __name__ == "__main__":
+	tree = binary_tree.construct_binary_tree()
+	postorder(tree.root)

@@ -5,16 +5,14 @@
 import binary_tree
 
 class Node(object):
-
 	def __init__(self, data):
-
 		self.data = data
 		self.left = None
 		self.right = None
 		self.next = None
 
 def connect_nodes(root):
-
+	'''Connect nodes in a tree considering that it is a complete binary tree'''
 	if root == None:
 		return
 
@@ -32,6 +30,7 @@ def connect_nodes(root):
 
 
 def inorder(root):
+	'''Print inorder traversal of a tree'''
 	if root is not None:
 		inorder(root.left)
 		print root.data
@@ -41,7 +40,6 @@ def inorder(root):
 		
 
 def construct_binary_tree():
-
 	# initialize root node of a tree
 	root = Node(1)
 
@@ -54,13 +52,9 @@ def construct_binary_tree():
 	root.right.right = Node(5)
 	root.right.left.right = Node(6)
 
-	# tree.inorder(root)
-
 	return tree
 
 if __name__=="__main__":
 	tree = construct_binary_tree()
-
 	connect_nodes(tree.root)
-
 	inorder(tree.root)
