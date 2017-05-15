@@ -9,7 +9,7 @@ class Graph(object):
 		self.V = V
 		self.adj_list = [[] for i in range(V)]
 
-	def addEdge(self, src, dest):
+	def add_edge(self, src, dest):
 		self.adj_list[src].append(dest)
 
 	def dfs_util(self, start, visited):
@@ -34,11 +34,11 @@ class Graph(object):
 
 def construct_graph():
 	graph = Graph(5)
-	graph.addEdge(1, 0)
-	graph.addEdge(0, 2)
-	graph.addEdge(2, 1)
-	graph.addEdge(0, 3)
-	graph.addEdge(1, 4)
+	graph.add_edge(1, 0)
+	graph.add_edge(0, 2)
+	graph.add_edge(2, 1)
+	graph.add_edge(0, 3)
+	graph.add_edge(1, 4)
 
 	return graph
 

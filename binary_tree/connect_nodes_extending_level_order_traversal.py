@@ -27,13 +27,13 @@ def print_nextRight(root, value):
 		print_nextRight(root.right, value)
 
 def inorder(root):
-		if root is not None:
-			inorder(root.left)
-			print root.data
-			inorder(root.right)
+	if root is not None:
+		inorder(root.left)
+		print root.data
+		inorder(root.right)
 
 def connect_nodes(root):
-
+	'''Connect nodes at the same level using level order traversal'''
 	if root is None:
 		return
 
@@ -55,6 +55,30 @@ def connect_nodes(root):
 			if s.node.right:
 				queue.append(Queue_Node(s.node.right, level+1))
 
+import Queue
+def connect(root):
+	if root is None:
+		return
+
+	else:
+		queue = Queue.Queue()
+		queue.put(root)
+
+		while !queue.empty:
+
+			num_elements = q.size()
+
+			while (num_elements):
+				s = q.get()
+
+				if s.left:
+					q.put(s.left)
+
+				if s.right:
+					q.put(s.right)
+
+				num_elements -= 1
+
 def construct_binary_tree():
 	root = Node(26)
 	root.left = Node(10)
@@ -66,6 +90,7 @@ def construct_binary_tree():
 
 	return root
 
-root = construct_binary_tree()
-connect_nodes(root)
-print_nextRight(root, 10)
+if __name__ == "__main__":
+	root = construct_binary_tree()
+	connect_nodes(root)
+	print_nextRight(root, 10)

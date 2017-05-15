@@ -5,6 +5,16 @@
 	Example:
 		15432 -> 21345
 		546531 -> 551346
+
+
+	Step1: Identify the decending sequence in the end, if not present return None
+		98393282914[6531]
+
+	Step2: Reverse the seq if found
+		98393282914[1356]
+
+	Step3: Swap the pivot number with a number just larger than the pivot in the seq
+		4 <-> 5
 '''
 
 def smallestPermutationLargerThanOriginalNumber(num):
@@ -30,3 +40,4 @@ def smallestPermutationLargerThanOriginalNumber(num):
 
 print smallestPermutationLargerThanOriginalNumber(15432)
 print smallestPermutationLargerThanOriginalNumber(546531)
+print smallestPermutationLargerThanOriginalNumber(983932829146531)

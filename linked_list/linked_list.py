@@ -83,4 +83,3 @@ class LinkedList(object):
 			temp = temp.nextnode
 		print ("Node not found")
 		return
-
