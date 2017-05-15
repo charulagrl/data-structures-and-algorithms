@@ -22,7 +22,7 @@ def n_stairs_dynamic(N):
 
 	return soln[N-1]
 
-N = 4
-print n_stairs(4)
-print n_stairs_dynamic(N)
-
+if __name__ == "__main__":
+	N = 4
+	print n_stairs(4)
+	print n_stairs_dynamic(N)

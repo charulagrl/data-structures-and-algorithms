@@ -16,19 +16,20 @@ def step_recursive(n):
 	else:
 		return step_recursive(n-1) + step_recursive(n-2) + step_recursive(n-3)
 
-def step_dynamic(n, mem):
-	''' Calculates the possible ways to run up the stairs using dynamic programmic '''
-	if n < 0:
-		return 0
+def step_dynamic(n):
+	'''Count the number of ways to take n steps usng dynamic programming'''
+	soln = [0] * (n+1)
+	soln[0] = 1
+	
+	for i in range(1, n+1):
+		if i >= 1:
+			soln[i] += soln[i-1]
+		if i >= 2:
+			soln[i] += soln[i-2]
+		if i >= 3:
+			soln[i] += soln[i-3]
 
-	if n == 0:
-		return 1
-
-	if mem[n] > -1:
-		return mem[n]
-	else:
-		mem[n] = step_dynamic(n-1, mem) + step_dynamic(n-2, mem) + step_dynamic(n-3, mem)
-		return mem[n]
+	return soln[n]
 
 if __name__ == "__main__":
 	print "Counting possible ways using recursion"
@@ -36,6 +37,6 @@ if __name__ == "__main__":
 	print step_recursive(5)
 	print step_recursive(6)
 	print "Counting possible ways using dynamic programming"
-	print step_dynamic(4, [-1]*5)
-	print step_dynamic(5, [-1]*6)
-	print step_dynamic(6, [-1]*7)
+	print step_dynamic(4)
+	print step_dynamic(5)
+	print step_dynamic(6)
