@@ -1,47 +1,61 @@
 # -*- coding: UTF-8 -*-
 
-# def find_path(cur_i, cur_j, grid, R, C):
-# 	if 0 <= cur_i < R and 0 <= cur_j < C:
-# 		grid[cur_i][cur_j] = "P"
+'''
+	Imagine a robot sitting on the upper left corner of the grid with r rows and c columns. The robot can only move
+	in two directions, right and down, but certain cells are off limits such that the robot cannot step on them.
+	Design an algorithm to find the path for the robot from the top left to the bottom right.
+'''
+def find_path(cur_i, cur_j, grid, path):
+	
+	if cur_i < 0 or cur_j < 0:
+		return False
 
-# 	print grid, cur_i, cur_j
-# 	if grid[R-1][C-1] == "P":
-# 		return grid
+	if grid[cur_i][cur_j] in ['X', 'P']:
+		return False
 
-# 	if cur_j < C-1 and grid[cur_i][cur_j+1] not in ['X', 'P']:
-# 		print "recurse", cur_j+1
-# 		find_path(cur_i, cur_j+1, grid, R, C)
+	if (cur_i == 0 and cur_j == 0) or find_path(cur_i-1, cur_j, grid, path) or find_path(cur_i, cur_j-1, grid, path):
+		path.append((cur_i, cur_j))
+		return True
 
-# 	if cur_i < R-1 and grid[cur_i+1][cur_j] not in ['X', 'P']:
-# 		print "recurse row", cur_i+1
-# 		find_path(cur_i+1, cur_j, grid, R, C)
+	grid[cur_i][cur_j] = 'P'
 
-def find_path(cur_i, cur_j, grid):
+	return False
 
-	if cur_i == 0 and cur_j == 0:
-		return grid
+def find_path_dynamic(cur_i, cur_j, grid, path, cache):
+	
+	if cur_i < 0 or cur_j < 0:
+		return False
 
-	grid[cur_i][cur_j] = "P"
+	if grid[cur_i][cur_j] == 'X':
+		return False
 
-	print grid
-	if cur_j > 0 and grid[cur_i][cur_j-1] not in ['X', 'P']:
-		print "recurse col", cur_j-1
-		find_path(cur_i, cur_j-1, grid)
+	key = (cur_i, cur_j)
 
-	if cur_i > 0 and grid[cur_i-1][cur_j] not in ['X', 'P']:
-		print "recurse row", cur_i-1
-		find_path(cur_i-1, cur_j, grid)
+	if key in cache:
+		return cache[key]
+
+	success = False
+	if (cur_i == 0 and cur_j == 0) or find_path(cur_i-1, cur_j, grid, path) or find_path(cur_i, cur_j-1, grid, path):
+		path.append((cur_i, cur_j))
+		success = True
+
+	cache[(cur_i, cur_j)] = success
+	return success
 
 if __name__ == "__main__":
 	grid = []
 	for i in range(6):
-		grid.append(['N']*5)
+		grid.append(['']*5)
 	
 	grid[0][2] = "X"
 	grid[1][4] = "X"
 	grid[2][3] = "X"
 	grid[4][0] = "X"
 	print grid
-	
-	find_path(len(grid)-1, len(grid[0])-1, grid)
-	print grid
+	path = []
+	find_path(len(grid)-1, len(grid[0])-1, grid, path)
+	print path
+	path = []
+	cache = {}
+	find_path_dynamic(len(grid)-1, len(grid[0])-1, grid, path, cache)
+	print path

@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 '''
 	A dictionary is a type of data structure that is supported natively in all major interpreted languages
-	such as JavaScript, Python, Ruby and PHP, where it’s known as an Object, Dictionary, Hash and Array, 
+	such as JavaScript, Python, Ruby and PHP, where it’s known as an Object, Dictionary, Hash and Array,
 	respectively. In simple terms, a dictionary is a collection of unique keys and their values. The values can 
 	typically be of any primitive type (i.e an integer, boolean, double, string etc) or other dictionaries 
 	(dictionaries can be nested).
@@ -30,7 +30,9 @@
 
 '''
 
-# Time-complexity: O(n) where n will be numder of nodes if you represent all the keys in a tree
+# Time-complexity: O(n) where n will be numder of keys in the input dictionary
+# if you represent all the keys in a tree
+#  O(N) since the output dictionary is asymptotically as big as the input dictionary. 
 def flattendict(s, input, output):
 	for key, value in input.iteritems():
 		new_key = s + key
