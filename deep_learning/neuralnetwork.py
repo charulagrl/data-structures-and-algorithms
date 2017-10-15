@@ -1,3 +1,5 @@
+# neural network from scratch
+
 import numpy as np
 import dill
 
