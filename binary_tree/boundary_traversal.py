@@ -12,11 +12,12 @@ def printBoundaryLeft(root):
 	if not root:
 		return
 
+	'''We won't do anything if it's a leaf node to avoid duplicates'''
 	if root.left:
 		print root.data
 		printBoundaryLeft(root.left)
 	elif root.right:
-		print root.right
+		print root.data
 		printBoundaryLeft(root.right)
 
 def printLeaves(root):
@@ -35,13 +36,13 @@ def printBoundaryRight(root):
 	'''Print right boundary of the binary tree'''
 	if not root:
 		return
-
+	'''To ensure bottom up order, first call for right subtree, then print this node'''
 	if root.right:
-		print root.data
 		printBoundaryRight(root.right)
-	elif root.left:
 		print root.data
+	elif root.left:
 		printBoundaryRight(root.left)
+		print root.data
 
 def printBoundary(root):
 	'''Print the boundary traversal of a tree'''
