@@ -2,7 +2,12 @@
 
 # Program to construct a special tree from preorder traversal
 
-# Given an array ‘pre[]’ that represents Preorder traversal of a spacial binary tree where every node has either 0 or 2 children. One more array ‘preLN[]’ is given which has only two possible values ‘L’ and ‘N’. The value ‘L’ in ‘preLN[]’ indicates that the corresponding node in Binary Tree is a leaf node and value ‘N’ indicates that the corresponding node is non-leaf node. 
+'''
+	Given an array ‘pre[]’ that represents Preorder traversal of a spacial binary tree where 
+	every node has either 0 or 2 children. One more array ‘preLN[]’ is given which has only two 
+	possible values ‘L’ and ‘N’. The value ‘L’ in ‘preLN[]’ indicates that the corresponding node 
+	in Binary Tree is a leaf node and value ‘N’ indicates that the corresponding node is non-leaf node. 
+'''
 import binary_tree
 
 index = -1

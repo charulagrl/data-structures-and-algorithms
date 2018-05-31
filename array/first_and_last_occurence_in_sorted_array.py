@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 
-# Program to find the first and last occurence of an element in a linked list
+# Program to find the first and last occurence of an element in an array
 
 def find_first(arr, element):
 

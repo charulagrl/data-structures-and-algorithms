@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 
-# Program to detect cycle in an undirected graph
+# Program to detect cycle in an directed graph
 
 # Time-complexity: O(V+E)
 class Graph(object):

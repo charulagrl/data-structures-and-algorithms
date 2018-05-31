@@ -55,3 +55,7 @@ def merge_sort(array):
 
 	# Merge the two arrays
 	return merge(l1, l2)
+
+a = [12, 11, 13, 5, 6, 7, 3, 55, 21, 77, 4]
+a = merge_sort(a)
+print a

@@ -16,7 +16,7 @@ def check_tree(root):
 
 	queue = Queue.Queue()
 	flag = False
-
+	queue.put(root)
 	while not queue.empty():
 
 		s = queue.get()

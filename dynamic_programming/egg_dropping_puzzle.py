@@ -74,8 +74,8 @@ import unittest
 
 class MyTest(unittest.TestCase):
 	def setUp(self):
-		self.eggs = 2
-		self.floors = 10
+		self.eggs = 3
+		self.floors = 20
 
 	def test_edit_distance_recursive(self):
 		self.assertEqual(egg_drop(self.eggs, self.floors), 4)

@@ -12,7 +12,7 @@
 from data_structures import graph
 
 class Kruskal(object):
-	'''Find the kruskal minimum spanning of a of graph'''
+	'''Find the kruskal minimum spanning tree of a graph'''
 	def __init__(self, graph):
 		self.graph = graph
 

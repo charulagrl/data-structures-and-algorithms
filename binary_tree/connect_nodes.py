@@ -16,8 +16,17 @@ def connect_nodes(root):
 	if root == None:
 		return
 
+	'''Before setting next of left and right children, set next of children of other 
+	nodes at same level (because we can access children of other nodes using p's next only)'''
+	if root.next != None:
+		connect_nodes(root.next)
+
 	if root.left:
-		root.left.next = root.right
+		if root.right:
+			root.left.next = root.right
+			root.right.next = getNextRight(root)
+		else:
+			root.left.next = getNextRight(root)
 
 	if root.right:
 		if root.next:
@@ -25,8 +34,8 @@ def connect_nodes(root):
 		else:
 			root.right.next = None
 
-		connect_nodes(root.right)
-		connect_nodes(root.left)
+	connect_nodes(root.right)
+	connect_nodes(root.left)
 
 
 def inorder(root):

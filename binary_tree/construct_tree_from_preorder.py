@@ -2,6 +2,7 @@
 
 # Program to construct a tree from its preorder traversal
 import binary_tree
+import sys
 
 preIndex = 0
 
@@ -28,7 +29,7 @@ def construct_tree(preorder, maximum, minimum, key):
 
 if __name__=="__main__":
 
-	root = construct_tree([3, 2, 1, 5, 4, 6], 100000, -100000, 3)
+	root = construct_tree([3, 2, 1, 5, 4, 6], sys.max_int, -sys.max_int, 3)
 
 	tree = binary_tree.Tree(root)
 

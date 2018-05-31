@@ -1,7 +1,11 @@
 # -*- coding: UTF-8 -*-
 
 '''
-	Program to detect cycle in an undirected graph
+	Program to detect cycle in an undirected graph using DFS traversal. We do a DFS 
+	traversal of the given graph. For every visited vertex ‘v’, if there is an adjacent 
+	‘u’ such that u is already visited and u is not parent of v, then there is a cycle in graph. 
+	If we don’t find such an adjacent for any vertex, we say that there is no cycle. The assumption 
+	of this approach is that there are no parallel edges between any two vertices.
 '''
 
 # Time-complexity: O(V+E)
@@ -16,31 +20,27 @@ class Graph(object):
 		self.adj_list[src].append(dest)
 		self.adj_list[dest].append(src)
 
-	def detect_cycle_util(self, start, parent, visited, rec_stack):
+	def detect_cycle_util(self, start, parent, visited):
 		'''Recursive use depth first search to detect cycle in a graph'''
 		if not visited[start]:
 			visited[start] = True
-			rec_stack[start] = True
 
 			for vertex in self.adj_list[start]:
-				if vertex != parent:
-					if not visited[vertex] and self.detect_cycle_util(vertex, start, visited, rec_stack):
+				if not visited[vertex]:
+					if self.detect_cycle_util(vertex, start, visited, rec_stack):
 						return True
 					
-					elif rec_stack[vertex]:
-						return True
+				elif (vertex != parent):
+					return True
 
-		# Remove th current start from recursion stack
-		rec_stack[start] = False
 		return False
 
 	def detect_cycle(self):
 		'''Detect cycle in a undirected graph'''
 		visited = [False] * self.V
-		rec_stack = [False] * self.V
 
 		for v in range(self.V):
-			if self.detect_cycle_util(v, -1, visited, rec_stack):
+			if self.detect_cycle_util(v, -1, visited):
 				return True
 
 		return False
