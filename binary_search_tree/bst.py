@@ -1,5 +1,3 @@
-# program to create a Binary search Tree
-
 class Node(object):
 
 	def __init__(self, data):
@@ -33,13 +31,13 @@ class Tree(object):
 	def preorder(self, root):
 		if root is not None:
 			print root.data
-			self.inorder(root.left)
-			self.inorder(root.right)
+			self.preorder(root.left)
+			self.preorder(root.right)
 
 	def postorder(self, root):
 		if root is not None:
-			self.inorder(root.left)
-			self.inorder(root.right)
+			self.postorder(root.left)
+			self.postorder(root.right)
 			print root.data
 
 	def height(self, root):
