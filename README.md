@@ -6,11 +6,11 @@ It contains programs on the following topics:
 
 ## Data Structures
 
-* [array](https://github.com/charulagrl/Data-Structures-and-Algorithms/tree/master/array)
+* [array](https://github.com/charulagrl/data-structures-and-algorithms/tree/master/data-structure-questions/array)
 * [string](https://github.com/charulagrl/Data-Structures-and-Algorithms/tree/master/string)
 * [linked list](https://github.com/charulagrl/Data-Structures-and-Algorithms/tree/master/linked_list)
 * [binary tree](https://github.com/charulagrl/Data-Structures-and-Algorithms/tree/master/binary_tree)
-* [binary search tree](https://github.com/charulagrl/data-structures-and-algorithms/tree/master/binary_search_tree)
+* [binary search tree](https://github.com/charulagrl/data-structures-and-algorithms/tree/master/data-structure-questions/binary_search_tree)
 * [graphs](https://github.com/charulagrl/Data-Structures-and-Algorithms/tree/master/graph)
 
 ## Algorithms
