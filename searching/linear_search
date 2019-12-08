@@ -1,0 +1,6 @@
+def linearSearch(arr,key):   #key be the element to be found
+  n = len(arr)
+  for i in range(0,n):
+    if(arr[i] == key):
+      return i
+  return -1
